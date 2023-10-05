@@ -4,89 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Validation</title>
-    <style>
-        body
-        {
-            background-color:black;
+    <script>
+        function validateForm() {
+            var username = document.getElementById('user').value;
+            var password = document.getElementById('pass').value;
+            var confirmPassword = document.getElementById('confirmPass').value;
+            var phoneNumber = document.getElementById('phoneNumber').value;
+            var pinCode = document.getElementById('pinCode').value;
+            var validationResult = "";
+
+            if (username.length < 8) {
+                validationResult += "Username should be at least 8 characters.\n";
+            }
+
+            if (password.length < 8) {
+                validationResult += "Password should be at least 8 characters.\n";
+            }
+
+            if (password !== confirmPassword) {
+                validationResult += "Passwords do not match.\n";
+            }
+
+            if (phoneNumber.length > 10) {
+                validationResult += "Phone number should be at most 10 digits.\n";
+            }
+
+            if (pinCode.length > 6) {
+                validationResult += "Pin code should be at most 6 digits.\n";
+            }
+
+            if (validationResult === "") {
+                window.location.href = "https://rohanpashikanti.github.io/timetables/";
+            } else {
+                window.alert(validationResult);
+            }
         }
-        center
-        {
-            background-color:orange;
-            padding:20px;
-            border-radius:10px;
-        }
-        form
-        {
-            padding:20px;
-            border-radius:10px;
-        }
-        label 
-        {
-            background-color:green;
-            padding:5px;
-        }
-    </style>
+    </script>
 </head>
 <body>
     <center>
-         <h1>Form Validation</h1>
-        <form id="myForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username"><br><br>
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password"><br><br>
-
-            <label for="confirmPassword">Confirm Password:</label>
-            <input type="password" id="confirmPassword" name="confirmPassword"><br><br>
-
-            <label for="phoneNumber">Phone Number:</label>
-            <input type="text" id="phoneNumber" name="phoneNumber"><br><br>
-
-            <label for="pinCode">Pin Code:</label>
-            <input type="text" id="pinCode" name="pinCode"><br><br>
-
-            <button type="button"onclick="validateForm()">Submit</button>
+        <h1>Registration Form</h1>
+        <form>
+            Enter username: <input type="text" id="user"><br><br>
+            Enter password: <input type="password" id="pass"><br><br>
+            Confirm password: <input type="password" id="confirmPass"><br><br>
+            Enter phone number: <input type="text" id="phoneNumber"><br><br>
+            Enter pin code: <input type="text" id="pinCode"><br><br>
+            <button type="button" onclick="validateForm()">Register</button>
         </form>
-        <p id="validationResult"></p>
     </center>
-
-    <script>
-        function validateForm()
-        {
-            var username=document.getElementById('username').value;
-            var password=document.getElementById('password').value;
-            var confirmPassword=document.getElementById('confirmPassword').value;
-            var phoneNumber=document.getElementById('phoneNumber').value;
-            var pinCode=document.getElementById('pinCode').value;
-
-            var validationResult="";
-
-            if(username.length<8){
-                validationResult+="Username should be at least 8 characters.\n";
-            }
-            if(password.length<8)
-            {
-                validationResult+="Password should be at least 8 characters.\n";
-            }
-            if(password!==confirmPassword)
-            {
-                validationResult+="Passwords do not match.\n";
-            }
-            if(phoneNumber.length>10)
-             {
-                validationResult+="Phone number should be at most 10 digits.\n";
-            }
-            if(pinCode.length>6)
-             {
-                validationResult+="Pin code should be at most 6 digits.\n";
-            }
-            if(validationResult==="")
-            {
-                validationResult="Form is valid. Submission successful.";
-            }
-            document.getElementById('validationResult').textContent=validationResult;
-        }
-    </script>
 </body>
 </html>
